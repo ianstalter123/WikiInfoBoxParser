@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html ng-app="firstApp" lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Ergo</title>
+
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+	<script src ="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.3/angular.js"></script>
+
+	<style type="text/css">
+		.col-centered {
+			float: none;
+			margin: 0 auto;
+		}
+		.left {
+			text-align:left;
+		}
+
+		.right {
+			text-align:right;
+		}
+		.title {
+			text-decoration: underline;
+		}
+	</style>
+</head>
+<body ng-controller="MyFirstController">
+	<div class="row">
+		<div class="col-lg-3" align="center">
+		</div>
+		<div class="col-lg-6" align="center">
+			<div
+			style="text-align:left; border:1px solid grey; padding:10px"><h1>MENTIONS</h1></div>
+
+		</div>
+		<div class="col-lg-3" align="center">
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-lg-3" align="center">
+		</div>
+		<div class="col-lg-6" align="center">
+			<div
+			ng-repeat="item in data track by $index"
+			class="row" style="padding: 10px">
+
+			<div ng-if="$index % 2 === 0" class="col-lg-4 left">
+				<img
+				style="width:150px; height:150px; border:1px solid grey"
+				src="{{item.url}}" alt="">
+			</div>
+			<div ng-if="$index % 2 === 0" class="col-lg-8">
+
+				<ul style="text-align:left; list-style: none">
+					<li class="title">{{item.title}}</li>
+					<li><a href="{{item.site}}">{{item.site}}</a></li>
+					<li>{{item.date}}</li>
+					<li ng-if="item.editor">Edited by: {{item.editor}}</li>
+					<li>{{item.type}}</li>
+				</ul>
+
+			</div>
+
+			<div ng-if="$index % 2 !== 0" class="col-lg-8">
+
+				<ul style="text-align:right; list-style: none">
+					<li class="title">{{item.title}}</li>
+					<li><a href="{{item.site}}">{{item.site}}</a></li>
+					<li>{{item.date}}</li>
+					<li ng-if="item.editor">Edited by: {{item.editor}}</li>
+					<li>{{item.type}}</li>
+				</ul>
+
+			</div>
+			<div ng-if="$index % 2 !== 0" class="col-lg-4 right">
+				<img
+				style="width:150px; height:150px; border:1px solid grey"
+				src="{{item.url}}" alt="">
+			</div>
+
+		</div>
+
+		<div class="col-lg-3" align="center">
+		</div>
+	</div>
+	<script src='scripts.js' type='text/javascript'></script>
+</body>
+</html>
